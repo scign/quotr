@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% block content %}
+<h1>Quote finder</h1>
+<div class="card w-50 border border-secondary">
+  <img src="" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">Pick a topic</h5>
+    <form action="/" method="get">
+      {% for genre in genres %}
+      <button type="submit" class="btn btn-md btn-primary m-sm-2" name="genre" value="{{ genre }}">{{ genre }}</button>
+      {% endfor %}
+    </form>
+    <br>
+    <form action="/" method="get">
+      <div class="input-group mb-3">
+        <input type="text" name="genre" class="form-control" placeholder="Enter your own word" />
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-secondary">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="card-text">{{ matches[0][0] }}</div>
+    <div class="card-text text-muted">{{ quote }}</div>
+  </div>
+</div>
+
+<div class="card w-50 border border-secondary">
+  <img src="" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">Best matches</h5>
+    <form action="/" method="get">
+      {% for match in matches %}
+      <button type="submit" class="btn btn-md btn-primary m-sm-2" name="genre" value="{{ match[0] }}">
+        {{ match[0] }}<br>{{ '{:.0%}'.format(match[1]) }}
+      </button>
+      {% endfor %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
