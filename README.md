@@ -10,7 +10,7 @@ Since there are only 117 genres in the quote library, if the user asks for a the
 The closest match is identified by translating the requested genre and all existing genre labels into multi-dimensional vectors and locating the closest using a measure called cosine distance. The vectors were learned from text samples such that similar words have similar vector representations.
 
 ## Try the app
-[quote-finder.azurewebsites.net](quote-finder.azurewebsites.net)
+[http://quote-finder.azurewebsites.net](http://quote-finder.azurewebsites.net)
 
 ## Author
 Aleem Juma
