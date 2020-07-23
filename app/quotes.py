@@ -1,5 +1,6 @@
 ## Author: Aleem Juma
 
+import os
 from app import app
 import pandas as pd
 import gensim.downloader as api
@@ -10,7 +11,7 @@ while True:
         break
     except:
         pass
-q = pd.read_csv('app\\data\\quotes_all.csv', sep=';', skiprows=1, header=0)
+q = pd.read_csv(os.path.join('app','data','quotes_all.csv'), sep=';', skiprows=1, header=0)
 
 # there are a few quote genres that don't occur in the model vocab
 # replace them with appropriate words so the similarity search works
