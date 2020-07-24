@@ -65,7 +65,7 @@ def get_closest_words(word, choices, n=1):
         # if the requested label isn't in the model vocab, return a random genre
         return [(get_random_word(), 1.0), (word, 0.0)]
 
-def find_matching_quote(genre):
+def find_matching_quote(genre, top_n=5):
     '''
     Returns a matching quote and up to 5 of the most similar genres with similarity measures
     Paramters:
@@ -77,7 +77,7 @@ def find_matching_quote(genre):
     (list) List of tuples in the form (word (str), simliarity (float))
     '''
     # find closest matches
-    matched_genres = get_closest_words(genre, q.GENRE.unique(), 5)
+    matched_genres = get_closest_words(genre, q.GENRE.unique(), top_n)
     # get the best one
     closest = matched_genres[0][0]
     app.logger.info(f'Finding quote for: "{closest}"')

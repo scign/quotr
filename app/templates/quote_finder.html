@@ -3,8 +3,16 @@
 <h1 class="text-center">Quote finder</h1>
 <div class="container-fluid">
   <div class="card-columns d-flex justify-content-center">
+    <div class="card w-75 border-0 mt-5">
+      <div class="card-body">
+        <h2 class="card-title text-center" style="font-family: serif;"><b><em>{{ quote }}</em></b></h2>
+        <div class="card-text text-right">{{ author }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card-columns d-flex justify-content-center">
     <div class="card w-50 border border-secondary">
-      <img src="" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">Pick a random topic</h5>
         <form action="/" method="get">
@@ -23,26 +31,32 @@
         </form>
         <div class="card-text">Genre requested: <b>{{ requested }}</b></div>
         <div class="card-text">Genre found: <b>{{ matches[0][0] }}</b></div>
-        <div class="card-text text-muted mt-sm-3">{{ quote }}</div>
-        <div class="card-text text-muted text-right"><em>{{ author }}</em></div>
       </div>
     </div>
     
-    <div class="card w-25 border border-secondary">
+    <div class="card w-50 border border-secondary">
       <img src="" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title text-center">Best matches</h5>
+        <h5 class="card-title text-center">Best matches for: <span class="text-muted">{{ requested }}</span></h5>
         <form action="/" method="get">
-          <div class="text-center">
+          <div class="row">
           {% for match in matches %}
-          <button type="submit" class="btn btn-md btn-primary m-sm-2 w-75" name="genre" value="{{ match[0] }}">
+          <div class="col-6">
+          <button type="submit" class="w-100 btn btn-md btn-primary m-sm-2" name="genre" value="{{ match[0] }}">
             {{ match[0] }} ({{ '{:.0%}'.format(match[1]) }})
           </button>
+          </div>
           {% endfor %}
+          </div>
         </div>
         </form>
       </div>
     </div>
+    <div class="container invisible"><div class="m-sm-4">The author of this site is not responsible for the content of the quotes displayed above. For that, blame whoever said it first.</div></div>
+    </div>
+
+  <div class="container fixed-bottom text-center bg-secondary">
+    <div class="m-sm-4"><b>The author of this site is not responsible for the content of the quotes displayed above. For that, blame whoever said it first.</b></div>
   </div>
 </div>
 {% endblock %}

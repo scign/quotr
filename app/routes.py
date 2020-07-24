@@ -14,14 +14,14 @@ def index():
     app.logger.info(f'Request received: "{genre}"')
     
     # find matching quote
-    quote, author, matches = find_matching_quote(genre)
+    quote, author, matches = find_matching_quote(genre, 4)
     
     # display the page
     return render_template(
         'quote_finder.html',
-        requested=genre,
-        genres=genres,
-        quote=quote,
-        author=author,
-        matches=matches
+        requested=genre,        # requested word (or first random word)
+        genres=genres,          # selected random words
+        quote=quote,            # selected quote
+        author=author,          # author of selected quote
+        matches=matches         # best matches
     )
