@@ -3,15 +3,7 @@
 import os
 from app import app
 import pandas as pd
-import gensim.downloader as api
 
-# sometimes the model needs a couple of tries to load
-while True:
-    try:
-        model = api.load('glove-wiki-gigaword-50')
-        break
-    except:
-        pass
 # read in the quotes database
 q = pd.read_csv(os.path.join('app','data','quotes_all.csv'), sep=';', skiprows=1, header=0)
 
@@ -27,6 +19,19 @@ replace = {
     'valentinesday': 'valentine'
 }
 q['GENRE'].replace(to_replace=replace, inplace=True)
+
+import spacy
+nlp = spacy.load('en_core_web_md')
+# cache the computed tokens for the genres in the dataset
+cache = {genre:nlp(genre) for genre in q.GENRE.unique()}
+
+def get_similarity(word1, word2):
+    '''
+    Returns a similarity score between two words
+    '''
+    tok1 = cache.get(word1, nlp(word1))
+    tok2 = cache.get(word2, nlp(word2))
+    return tok1.similarity(tok2)
 
 def get_random_word():
     '''
@@ -50,9 +55,9 @@ def get_closest_words(word, choices, n=1):
     if word in choices:
         # if the word is already in the list return the same word with 100% match
         return [(word, 1.0)]
-    if word in model.vocab.keys():
+    if word in nlp.vocab.strings:
         # if not in the list, find the closest words
-        similarities = [(choice, model.similarity(word, choice)) for choice in choices]
+        similarities = [(choice, get_similarity(word, choice)) for choice in choices]
         # sort, reverse, and return the top n (word,similarity) tuples
         return sorted(similarities, key=lambda x: x[1])[::-1][:n]
     else:
