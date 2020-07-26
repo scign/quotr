@@ -13,8 +13,10 @@
   
   <div class="card-columns d-flex justify-content-center">
     <div class="card w-50 border border-secondary">
+      <div class="card-header">
+        <h5 class="card-title text-center">Pick a random topic</h5>
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Pick a random topic</h5>
         <form action="/" method="get">
           {% for genre in genres %}
           <button type="submit" class="btn btn-md btn-primary m-sm-2" name="genre" value="{{ genre }}">{{ genre }}</button>
@@ -30,14 +32,15 @@
           </div>
         </form>
         <div class="card-text">Genre requested: <b>{{ requested }}</b></div>
-        <div class="card-text">Genre found: <b>{{ matches[0][0] }}</b></div>
+        <div class="card-text">AI-powered similarity result: <b>{{ matches[0][0] }}</b></div>
       </div>
     </div>
     
     <div class="card w-50 border border-secondary">
-      <img src="" class="card-img-top">
-      <div class="card-body">
+      <div class="card-header">
         <h5 class="card-title text-center">Best matches for: <span class="text-muted">{{ requested }}</span></h5>
+      </div>
+      <div class="card-body">
         <form action="/" method="get">
           <div class="row">
           {% for match in matches %}
