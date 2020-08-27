@@ -1,7 +1,7 @@
 # Quote Finder
 A flask web app that finds a quote on any given genre.
 
-![Screenshot](img/quotr.png)
+![Screenshot](quotr.png)
 
 ## Dataset
 The quotes are pulled from a CSV file obtained from [TheWebMiner](https://thewebminer.com/buy-famous-quotes-database) containing around 76,000 quotes across 117 genres, by over 11,000 authors.
