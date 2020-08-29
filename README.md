@@ -18,8 +18,8 @@ The closest match is identified by translating the requested genre and all exist
 Aleem Juma
 
 
-## Microsoft Azure Scholarship Project Showcasing Challenge
-[Guidelines](https://docs.google.com/document/d/1p0rplg0ZrIFfBabY1WyhyVOxjVjxMORC3koV00rscAI/edit)
+# Microsoft Azure Scholarship Project Showcasing Challenge
+[Link to guidelines](https://docs.google.com/document/d/1p0rplg0ZrIFfBabY1WyhyVOxjVjxMORC3koV00rscAI/edit)
 
 All criteria are fully met for a full 100% score!
 
@@ -39,6 +39,13 @@ Communication is a need in all situations. People communicate best when they fin
 * Privacy/Security - No user data is ingested or revealed through using this tool.
 * Accountability - All quotes are attributed to their sources and the page contains a reference to this repository for full code accountability.
 * Reliability/Safety - If a word is not found in the dataset or the model, the tool fails gracefully and selects a random topic for the user.
-* Fairness - The NLP involved is the en_core_web_md model sourced through spaCy trained on OntoNotes which is a diverse dataset.
+* Fairness - The tool provides quotes in English for maximum accessibility worldwide.
 * Inclusiveness - The model is sourced from the spaCy en_core_web_md model, trained on OntoNotes 5 which is a diverse dataset to ensure reasonable inclusivess of ideas. Quotes are in English only which matches the model vocabulary and is the most widely spoken language in the world which further facilitates communication.
 * Transparency - The page makes it clear that an AI model is involved in returning information ("AI-powered similarity result" is displayed), and shows potential other matches that can be selected for further refinement.
+
+
+## Potential further improvements
+* Show similar options even when a match is found in the database genres
+* Expand quote database
+* Add translation engine to translate quotes to other languages to improve accessibility
+* Allow natural language input (e.g. "give me a quote to make me feel more positive")
